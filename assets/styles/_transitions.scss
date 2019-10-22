@@ -1,0 +1,63 @@
+.transition {
+  &__default {
+    transition: all 0.3s var(--ease-primary);
+  }
+}
+
+.page {
+  &-enter-active,
+  &-leave-active {
+    transition: all 0.3s var(--ease-primary);
+  }
+
+  &-enter,
+  &-leave-active {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+.slide-right {
+  &-enter-active {
+    transition: all 1s var(--ease-primary);
+  }
+  &-leave-active {
+    transition: all 0.6s var(--ease-primary);
+  }
+
+  &-enter,
+  &-leave-to {
+    transform: translateX(-8rem);
+    opacity: 0;
+  }
+}
+
+.slide-up {
+  &-enter-active {
+    transition: all 1s var(--ease-primary);
+  }
+  &-leave-active {
+    transition: all 0.6s var(--ease-primary);
+  }
+
+  &-enter,
+  &-leave-to {
+    transform: translateY(10rem);
+    opacity: 0;
+  }
+}
+
+.slide-up-apple {
+  &-enter-active {
+    transition: all 1.2s var(--ease-primary);
+  }
+  &-leave-active {
+    transition: all 0.8s var(--ease-primary);
+  }
+
+  &-enter,
+  &-leave-to {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+}

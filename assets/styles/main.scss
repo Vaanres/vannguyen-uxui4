@@ -1,0 +1,133 @@
+@import './variables';
+@import './customized_bootstrap';
+@import './funcs_mixs';
+@import './transitions';
+
+:root {
+  --ease-primary: cubic-bezier(0.475, 0.425, 0, 0.995);
+  --ease-apple-image: cubic-bezier(0.19, 1, 0.22, 1);
+  --white-50: rgba(255, 255, 255, 0.5);
+}
+
+@include media-breakpoint-down(xs) {
+  :root {
+    font-size: 17px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    &-track {
+      background: var(--dark);
+    }
+    &-thumb {
+      background: white;
+      transition: all 0.3s var(--ease-primary);
+
+      &:hover {
+        background: var(--gray);
+      }
+    }
+  }
+}
+
+* {
+  touch-action: manipulation;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: black;
+}
+
+a {
+  &.v-link,
+  &.nav-link {
+    @include v-link();
+    &.nuxt-link-exact-active {
+      color: white !important;
+      &:before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.tag-line {
+  font-size: 1rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.section {
+  --section--default-spacing-x: 2rem;
+  --section--default-spacing-y: 6rem;
+
+  &-title {
+    margin-bottom: var(--section--default-spacing-y);
+  }
+
+  &-spacing {
+    padding-left: var(--section--default-spacing-x);
+    padding-right: var(--section--default-spacing-x);
+    padding-top: var(--section--default-spacing-y);
+    padding-bottom: var(--section--default-spacing-y);
+
+    &-x {
+      padding-left: var(--section--default-spacing-x);
+      padding-right: var(--section--default-spacing-x);
+    }
+
+    &-y {
+      padding-top: var(--section--default-spacing-y);
+      padding-bottom: var(--section--default-spacing-y);
+    }
+  }
+
+  &-dots {
+    &::after {
+      @include positioning(0, 0, 0, 0);
+      position: absolute;
+      content: '';
+
+      background-image: url('~assets/img/dot.svg');
+      background-attachment: fixed;
+      background-size: 1rem;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    > * {
+      z-index: 2;
+    }
+
+    @mixin dots-bg() {
+      &::before {
+        @include positioning(0, 0, 0, 0);
+        position: absolute;
+        content: '';
+        z-index: 1;
+        @content;
+      }
+    }
+
+    &.bg-top {
+      @include dots-bg() {
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+      }
+    }
+
+    &.bg-bottom {
+      @include dots-bg() {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
+      }
+    }
+  }
+}
