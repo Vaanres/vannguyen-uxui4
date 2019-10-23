@@ -1,8 +1,5 @@
 <template>
-  <div
-    :id="workItemId"
-    class="work-item embed-responsive embed-responsive-1by1"
-  >
+  <div :id="workItemId" class="work-item embed-responsive" :class="aspectRatio">
     <div class="embed-responsive-item">
       <div class="card position-relative h-100">
         <a
@@ -16,11 +13,13 @@
           >
             <div class="d-flex"></div>
             <div class="d-flex">
-              <h3 class="text-white m-0">{{ item.name }}</h3>
+              <h3 class="text-light m-0">{{ item.name }}</h3>
             </div>
 
             <div class="d-flex">
-              <p class="text-white m-0">{{ item.fields.join(' • ') }}</p>
+              <p class="text-white-50 m-0">
+                <small>{{ item.fields.join(' • ') }}</small>
+              </p>
             </div>
           </div>
 
@@ -28,7 +27,7 @@
             class="card-play position-absolute d-flex w-100 h-100 justify-content-center align-items-center"
           >
             <div class="d-inline-flex p-3 rounded-circle card-play__icon">
-              <i class="material-icons md-48 text-white">arrow_forward</i>
+              <i class="material-icons md-48 text-light">arrow_forward</i>
             </div>
           </div>
 
@@ -50,15 +49,13 @@ export default {
       type: Number,
       default: 0
     },
+    aspectRatio: {
+      type: String,
+      default: 'embed-responsive-4by3'
+    },
     item: {
       type: Object,
       default() {}
-    }
-  },
-  data() {
-    return {
-      hover: false,
-      imgUrl: '/img/item1.jpg'
     }
   },
   computed: {
@@ -68,6 +65,13 @@ export default {
     imagePath() {
       return this.item.covers['808']
     }
+  },
+  mounted() {
+    if (this.isMobile()) {
+      console.log('is Mobile')
+    } else {
+      console.log('hhhh')
+    }
   }
 }
 </script>
@@ -76,7 +80,7 @@ export default {
 .work-item {
   // desktop variables
 
-  --card-image-opacity: 0.5;
+  --card-image-opacity: 0.3;
   --card-image-scale: 1;
   --card-image-height: 70%;
   --card-image-width: 70%;
@@ -112,14 +116,6 @@ export default {
       @include positioning(0, 0, 0, 0);
     }
 
-    &.reveal {
-      --card-image-opacity: 1;
-      --card-image-scale: 1.1;
-      --card-text-opacity: 0;
-      --card-play-opacity: 1;
-      --card-play-translate-x: 0;
-    }
-
     &-text {
       @include positioning(0, 0, 0, 0);
       z-index: 2;
@@ -129,6 +125,9 @@ export default {
     }
 
     &-image {
+      --img-cover-bottom: 0;
+
+      position: relative;
       z-index: 1;
       height: var(--card-image-height);
       width: var(--card-image-width);
@@ -140,6 +139,22 @@ export default {
       opacity: var(--card-image-opacity);
       transform: scale(var(--card-image-scale));
       transition: all 0.3s ease-out, transform 15s var(--ease-apple-image);
+
+      &::after {
+        @include positioning(0, 0, 0, 0);
+        position: absolute;
+        content: '';
+        background: black;
+        z-index: 1;
+        transition: all 0.5s var(--ease-primary);
+        bottom: var(--img-cover-bottom);
+      }
+
+      &[lazy='loaded'] {
+        &::after {
+          --img-cover-bottom: 100%;
+        }
+      }
     }
 
     &-play {
@@ -149,10 +164,22 @@ export default {
       transition: all 0.3s ease-out;
       transition-delay: 0.2s;
 
+      .rounded-circle {
+        backdrop-filter: saturate(180%) blur(10px);
+      }
+
       &__icon {
         z-index: 3;
         background: transparentize($color: black, $amount: 0.5);
       }
+    }
+
+    &.reveal {
+      --card-image-opacity: 1;
+      --card-image-scale: 1.1;
+      --card-text-opacity: 0;
+      --card-play-opacity: 1;
+      --card-play-translate-x: 0;
     }
 
     @include media-breakpoint-up(sm) {

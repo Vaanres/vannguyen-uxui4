@@ -6,6 +6,7 @@
         :id="index"
         :key="index"
         :item="item"
+        :aspect-ratio="aspectRatio"
       />
     </div>
   </section>
@@ -26,6 +27,7 @@ export default {
   },
   data() {
     return {
+      aspectRatio: 'embed-responsive-4by3',
       projects: ProjectJSON.projects
     }
   },
@@ -34,6 +36,7 @@ export default {
   },
   mounted() {
     if (this.isMobile()) {
+      this.aspectRatio = 'embed-responsive-1by1'
       this.watchIntersection()
     }
   },
@@ -71,7 +74,7 @@ export default {
     display: grid;
     position: relative;
     @include media-breakpoint-up(sm) {
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     }
   }
 }
