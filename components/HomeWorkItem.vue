@@ -65,6 +65,32 @@ export default {
     imagePath() {
       return this.item.covers['808']
     }
+  },
+  mounted() {
+    this.watchIntersection()
+  },
+  methods: {
+    watchIntersection() {
+      // const _this = this
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            const item = document.querySelector(`#${this.workItemId} .card`)
+            if (entry.isIntersecting) {
+              item.classList.add('reveal')
+            } else {
+              item.classList.remove('reveal')
+            }
+          }
+        },
+        {
+          rootMargin: '0px',
+          threshold: 1
+        }
+      )
+
+      io.observe(document.getElementById(this.workItemId))
+    }
   }
 }
 </script>

@@ -22,7 +22,7 @@ export default {
   props: {
     itemQuantity: {
       type: Number,
-      default: 8
+      default: 12
     }
   },
   data() {
@@ -37,12 +37,12 @@ export default {
 
     if (this.isMobile()) {
       this.aspectRatio = 'embed-responsive-1by1'
-      this.watchIntersection()
     }
   },
   methods: {
     watchIntersection() {
-      // const _this = this
+      // Deprecated. Use IntersectionObserver inside child element.
+
       const io = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
@@ -77,7 +77,7 @@ export default {
           withCredentials: true
         },
         success(data) {
-          _this.works = data.projects.slice(0, this.itemQuantity)
+          _this.works = data.projects.slice(0, _this.itemQuantity)
         },
         error() {}
       })
