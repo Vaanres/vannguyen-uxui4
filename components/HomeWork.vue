@@ -86,11 +86,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @supports (display: grid) {
   .work {
     display: grid;
     position: relative;
+
     @include media-breakpoint-up(sm) {
       grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     }
