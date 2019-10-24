@@ -65,13 +65,6 @@ export default {
     imagePath() {
       return this.item.covers['808']
     }
-  },
-  mounted() {
-    if (this.isMobile()) {
-      console.log('is Mobile')
-    } else {
-      console.log('hhhh')
-    }
   }
 }
 </script>

@@ -1,5 +1,5 @@
 import meta from './meta.json'
-
+const webpack = require('webpack')
 export default {
   mode: 'universal',
   /*
@@ -21,10 +21,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      // {
-      //   rel: 'stylesheet',
-      //   href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
-      // },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://behance.com' },
       { rel: 'preconnect', href: 'https://www.linkedin.com/' },
@@ -57,6 +53,7 @@ export default {
    */
   modules: [
     // Doc: https://bootstrap-vue.js.org
+    'cookie-universal-nuxt',
     '@bazzite/nuxt-optimized-images',
     'nuxt-webfontloader',
     [
@@ -66,15 +63,15 @@ export default {
       }
     ],
     '@nuxtjs/style-resources',
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    [
-      '@nuxtjs/component-cache',
-      {
-        max: 10000,
-        maxAge: 1000 * 60 * 60
-      }
-    ]
+    '@nuxtjs/axios'
+    // '@nuxtjs/pwa',
+    // [
+    //   '@nuxtjs/component-cache',
+    //   {
+    //     max: 10000,
+    //     maxAge: 1000 * 60 * 60
+    //   }
+    // ]
   ],
   styleResources: {
     scss: ['~assets/styles/_core.scss']
@@ -109,7 +106,12 @@ export default {
       splitChunks: {
         name: true
       }
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery'
+      })
+    ]
   },
   render: {
     bundleRenderer: {
