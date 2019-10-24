@@ -63,15 +63,15 @@ export default {
       }
     ],
     // '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
-    // '@nuxtjs/pwa',
-    // [
-    //   '@nuxtjs/component-cache',
-    //   {
-    //     max: 10000,
-    //     maxAge: 1000 * 60 * 60
-    //   }
-    // ]
+    '@nuxtjs/style-resources',
+    '@nuxtjs/pwa',
+    [
+      '@nuxtjs/component-cache',
+      {
+        max: 10000,
+        maxAge: 1000 * 60 * 60
+      }
+    ]
   ],
   styleResources: {
     scss: ['~assets/styles/_core.scss']
