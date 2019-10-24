@@ -154,7 +154,7 @@ export default {
     }
 
     &-image {
-      --img-cover-bottom: 100%;
+      --img-cover-bottom: 0;
 
       position: relative;
       z-index: 1;
