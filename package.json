@@ -44,10 +44,14 @@
     "@nuxtjs/eslint-module": "^1.1.0",
     "@nuxtjs/style-resources": "^1.0.0",
     "babel-eslint": "^10.0.3",
+    "del": "^5.1.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-nuxt": ">=0.4.3",
     "eslint-plugin-prettier": "^3.1.1",
+    "gulp": "^4.0.2",
+    "gulp-image-resize": "^0.13.1",
+    "gulp-imagemin": "^6.1.1",
     "husky": "^3.0.9",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
@@ -56,6 +60,7 @@
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",
     "sass-loader": "^8.0.0",
+    "sharp": "^0.23.1",
     "webp-loader": "^0.5.0"
   }
 }

@@ -3,6 +3,7 @@
     <div class="embed-responsive-item">
       <div class="card position-relative h-100">
         <a
+          :id="item.id"
           class="card-content d-block h-100 text-decoration-none"
           target="_blank"
           rel="noreferrer"
@@ -30,7 +31,6 @@
               <i class="material-icons md-48 text-light">arrow_forward</i>
             </div>
           </div>
-
           <div
             v-lazy:background-image="imagePath"
             class="card-image position-absolute"
@@ -58,16 +58,26 @@ export default {
       default() {}
     }
   },
+  data() {
+    return {
+      styleObject: {
+        backgroundImage: `url('${this.item.covers['404']}')`
+      }
+    }
+  },
   computed: {
     workItemId() {
       return `work-item-${this.id}`
     },
     imagePath() {
-      return this.item.covers['808']
+      return `img/work/${this.id}.png`
+      // return this.item.covers['808']
     }
   },
   mounted() {
-    this.watchIntersection()
+    if (this.isMobile()) {
+      this.watchIntersection()
+    }
   },
   methods: {
     watchIntersection() {
@@ -144,7 +154,7 @@ export default {
     }
 
     &-image {
-      --img-cover-bottom: 0;
+      --img-cover-bottom: 100%;
 
       position: relative;
       z-index: 1;

@@ -62,16 +62,16 @@ export default {
         bootstrapCss: false
       }
     ],
-    '@nuxtjs/style-resources',
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    [
-      '@nuxtjs/component-cache',
-      {
-        max: 10000,
-        maxAge: 1000 * 60 * 60
-      }
-    ]
+    // '@nuxtjs/axios',
+    '@nuxtjs/style-resources'
+    // '@nuxtjs/pwa',
+    // [
+    //   '@nuxtjs/component-cache',
+    //   {
+    //     max: 10000,
+    //     maxAge: 1000 * 60 * 60
+    //   }
+    // ]
   ],
   styleResources: {
     scss: ['~assets/styles/_core.scss']
@@ -80,7 +80,7 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  // axios: {},
   /*
    ** Build configuration
    */

@@ -2,9 +2,9 @@
   <section>
     <div class="work">
       <home-work-item
-        v-for="(item, index) in works"
-        :id="index"
-        :key="index"
+        v-for="item in works"
+        :id="item.id"
+        :key="item.id"
         :item="item"
         :aspect-ratio="aspectRatio"
       />
@@ -15,6 +15,7 @@
 <script>
 import $ from 'jquery'
 import HomeWorkItem from '~/components/HomeWorkItem'
+import ProjectJSON from '~/static/data/projects.json'
 
 export default {
   name: `HomeWork`,
@@ -28,13 +29,15 @@ export default {
   data() {
     return {
       aspectRatio: 'embed-responsive-4by3',
-
+      projects: ProjectJSON.projects,
       works: []
     }
   },
+  created() {
+    this.works = this.projects.slice(0, this.itemQuantity)
+  },
   mounted() {
-    this.getData()
-
+    // getData()
     if (this.isMobile()) {
       this.aspectRatio = 'embed-responsive-1by1'
     }
@@ -65,12 +68,14 @@ export default {
       })
     },
     getData() {
+      // Deprecated
       const _this = this
 
       $.ajax({
         url:
           'https://www.behance.net/v2/users/Vaanres/projects?api_key=A3XrFvC6jnX6dLGSipermgOApEKZ6AU6',
         type: 'GET',
+        async: true,
         crossDomain: true,
         dataType: 'jsonp',
         xhrFields: {
