@@ -87,18 +87,23 @@
                 <h5 class="mb-3 text-light">UX/UI Team Lead</h5>
                 <ul class="list-unstyled">
                   <li>
-                    Maintained and developed front-end Victoria Hotels website.
-                    Analyzed and improved UI/Page speed of Buffalo Tours
-                    website.
+                    Responsible for new look and feel on front-end/back-end
+                    pages of iVIVU. From concepts on paper to Sketch App,
+                    designs and HTML/CSS/JS implementation.
                   </li>
                   <li>
-                    Responsible for backend app/website UX / UI. Designed and
-                    built responsive, usability pages based on Twitter
-                    Bootstrap. Created email templates based on Foundation.
+                    Helped to increase conversion rate (overall pages).
+                    Optimized usability and loading speed on most important
+                    pages.
                   </li>
                   <li>
-                    Tasked to Design and Develop Company's Internal and External
-                    Website.
+                    Responsible for building conversation flows for a chatbot in
+                    Facebook Messenger and built web & mobile design for chatbot
+                    App.
+                  </li>
+                  <li>
+                    Responsible for managing a team to develop products and
+                    services
                   </li>
                 </ul>
               </div>

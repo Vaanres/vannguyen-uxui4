@@ -4,6 +4,7 @@ const fs = require('fs-extra')
 const sharp = require('sharp')
 const del = require('del')
 const imagemin = require('gulp-imagemin')
+const webp = require('gulp-webp')
 
 const apiBehance = 'https://www.behance.net/v2/users/Vaanres/projects?api_key='
 const keyBehance = 'A3XrFvC6jnX6dLGSipermgOApEKZ6AU6'
@@ -17,9 +18,19 @@ function getBehanceJSON() {
   )
 }
 
+function convertToWebP() {
+  return src('static/img/work/*')
+    .pipe(
+      webp({
+        quality: 80
+      })
+    )
+    .pipe(dest('static/img/work_resized/'))
+}
+
 function resizeImages() {
   return src('static/img/work/*')
-    .pipe(imagemin([imagemin.optipng({ optimizationLevel: 7 })]))
+    .pipe(imagemin([imagemin.optipng({ optimizationLevel: 5 })]))
     .pipe(dest('static/img/work_resized/'))
 }
 
@@ -60,5 +71,10 @@ function getImages(cb) {
   cb()
 }
 
-exports.resize = series(resizeImages, moveImages, cleanWorkResized)
+exports.resize = series(
+  convertToWebP,
+  resizeImages,
+  moveImages,
+  cleanWorkResized
+)
 exports.default = series(getBehanceJSON, getImages)

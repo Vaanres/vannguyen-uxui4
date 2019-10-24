@@ -14,8 +14,14 @@ Vue.use(VueLazyload, {
     webp(listener, options) {
       if (listener.src && options.supportWebp) {
         const extension = listener.src.split('.').pop()
+        // if (extension === 'jpg' || extension === 'png') {
+        //   listener.src += '?webp'
+        // }
+
         if (extension === 'jpg' || extension === 'png') {
-          listener.src += '?webp'
+          const file =
+            listener.src.substr(0, listener.src.lastIndexOf('.')) + '.webp'
+          listener.src = file
         }
       }
     }
