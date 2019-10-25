@@ -1,5 +1,6 @@
 <template>
   <section
+    v-lazy:background-image="bg"
     class="section section-hero section-dots bg-top section-spacing-x d-flex justify-content-center align-items-sm-center"
   >
     <div class="container">
@@ -29,10 +30,14 @@ export default {
   name: `HomeHero`,
   data() {
     return {
-      show: false
+      show: false,
+      bg: 'img/banners/banner.jpg'
     }
   },
   mounted() {
+    this.bg = this.isMobile()
+      ? 'img/banners/banner-mobile.jpg'
+      : 'img/banners/banner.jpg'
     this.show = true
   }
 }
@@ -46,11 +51,11 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-image: url('~assets/img/banners/banner.jpg?webp');
+    //background-image: url('~assets/img/banners/banner.jpg?webp');
     transition: all 1s var(--ease-apple-image);
 
     @include media-breakpoint-down(xs) {
-      background: url('~assets/img/banners/banner-mobile.jpg?webp');
+      //background: url('~assets/img/banners/banner-mobile.jpg');
 
       &-content {
         margin-top: 50%;

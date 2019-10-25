@@ -19,7 +19,7 @@ function getBehanceJSON() {
 }
 
 function convertToWebPStatic() {
-  return src('static/img/banner.jpg')
+  return src('static/img/banners/*')
     .pipe(
       webp({
         quality: 80
