@@ -21,16 +21,22 @@ Vue.mixin({
         return false
       }
     },
-    isMobile() {
-      const element = document.querySelector('.is-mobile')
-      let isMobile = false
-      if (element) {
-        const display = window.getComputedStyle(element).display
+    detectDevice(name) {
+      const element = document.getElementsByClassName(name)
+      let value = false
+      if (element && element[0]) {
+        const display = window.getComputedStyle(element[0]).display
         if (display === 'block') {
-          isMobile = true
+          value = true
         }
       }
-      return isMobile
+      return value
+    },
+    isTablet() {
+      return this.detectDevice('is-tablet')
+    },
+    isMobile() {
+      return this.detectDevice('is-mobile')
     },
     charmingText(taglineSelector, titleSelector) {
       if (this.isExisted(taglineSelector) && this.isExisted(titleSelector)) {

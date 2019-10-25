@@ -96,8 +96,13 @@ export default {
   .work {
     display: grid;
     position: relative;
+    grid-template-columns: repeat(1, 1fr);
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(xl) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1920px) {
       grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     }
   }

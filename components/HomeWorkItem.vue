@@ -75,7 +75,8 @@ export default {
     }
   },
   mounted() {
-    if (this.isMobile()) {
+    if (this.isMobile() || this.isTablet()) {
+      console.log('watch')
       this.watchIntersection()
     }
   },
@@ -120,7 +121,7 @@ export default {
   --card-text-opacity: 1;
   --card-text-translate-x: 0;
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     // mobile variables
     --card-text-opacity: 1;
     --card-image-opacity: 0;
