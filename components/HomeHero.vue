@@ -46,11 +46,11 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-image: url('~assets/img/banner.jpg');
+    background-image: url('~assets/img/banners/banner.jpg?webp');
     transition: all 1s var(--ease-apple-image);
 
     @include media-breakpoint-down(xs) {
-      background: url('~assets/img/banner.jpg');
+      background: url('~assets/img/banners/banner-mobile.jpg?webp');
 
       &-content {
         margin-top: 50%;

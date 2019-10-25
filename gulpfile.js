@@ -18,6 +18,16 @@ function getBehanceJSON() {
   )
 }
 
+function convertToWebPStatic() {
+  return src('static/img/banner.jpg')
+    .pipe(
+      webp({
+        quality: 80
+      })
+    )
+    .pipe(dest('static/img/'))
+}
+
 function convertToWebP() {
   return src('static/img/work/*')
     .pipe(
@@ -70,6 +80,8 @@ function getImages(cb) {
 
   cb()
 }
+
+exports.convertToWebPStatic = convertToWebPStatic
 
 exports.resize = series(
   convertToWebP,
