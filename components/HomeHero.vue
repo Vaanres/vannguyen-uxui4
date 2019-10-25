@@ -10,7 +10,7 @@
             <div
               v-show="show"
               class="text-md-center"
-              style="transition-delay: 150ms"
+              style="transition-delay: 100ms"
             >
               <p class="text-primary tag-line">I AM A</p>
               <h1 class="title text-light mb-4">Product Designer</h1>

@@ -76,7 +76,6 @@ export default {
   },
   mounted() {
     if (this.isMobile() || this.isTablet()) {
-      console.log('watch')
       this.watchIntersection()
     }
   },

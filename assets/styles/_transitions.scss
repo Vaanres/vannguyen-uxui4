@@ -49,10 +49,10 @@
 
 .slide-up-apple {
   &-enter-active {
-    transition: all 1.2s var(--ease-primary);
+    transition: all 1s var(--ease-primary);
   }
   &-leave-active {
-    transition: all 0.8s var(--ease-primary);
+    transition: all 0.6s var(--ease-primary);
   }
 
   &-enter,
