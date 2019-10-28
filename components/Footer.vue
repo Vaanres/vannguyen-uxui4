@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-12 col-md-6 mb-2 mb-md-0">
         <div class="d-flex">
-          <nuxt-link class="v-link" to="/">Work</nuxt-link>
-          <nuxt-link class="v-link" to="/about">About me</nuxt-link>
+          <nuxt-link class="v-link" to="/">My Work</nuxt-link>
+          <nuxt-link class="v-link" to="/about">About Me</nuxt-link>
         </div>
       </div>
       <div class="col-12 col-md-6">
