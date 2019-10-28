@@ -55,6 +55,7 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     'cookie-universal-nuxt',
     '@bazzite/nuxt-optimized-images',
+
     'nuxt-webfontloader',
     [
       'bootstrap-vue/nuxt',
@@ -62,6 +63,7 @@ export default {
         bootstrapCss: false
       }
     ],
+    '@nuxtjs/google-analytics',
     // '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     '@nuxtjs/pwa',
@@ -104,6 +106,7 @@ export default {
     },
     optimization: {
       splitChunks: {
+        chunks: 'all',
         name: true
       }
     },
@@ -141,5 +144,12 @@ export default {
   },
   optimizedImages: {
     optimizeImages: true
+  },
+  googleAnalytics: {
+    id: 'UA-125988354-2',
+    dev: false
+  },
+  generate: {
+    fallback: true // if you want to use '404.html' instead of the default '200.html'
   }
 }

@@ -14,7 +14,19 @@ import HomeIntro from '~/components/HomeIntro'
 import Dots from '~/components/Dots'
 
 export default {
-  components: { HomeHero, HomeWork, HomeIntro, Dots }
+  components: { HomeHero, HomeWork, HomeIntro, Dots },
+  head() {
+    return {
+      title: 'My Work',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'My current work'
+        }
+      ]
+    }
+  }
 }
 </script>
 <style lang="scss"></style>

@@ -33,11 +33,11 @@ export default {
     return {
       links: [
         {
-          title: 'Work',
+          title: 'My Work',
           link: '/'
         },
         {
-          title: 'About',
+          title: 'About Me',
           link: '/about'
         }
       ],

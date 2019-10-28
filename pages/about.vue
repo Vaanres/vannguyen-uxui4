@@ -170,6 +170,18 @@ import Dots from '~/components/Dots'
 export default {
   name: `About`,
   components: { Dots },
+  head() {
+    return {
+      title: 'About me',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'About me'
+        }
+      ]
+    }
+  },
   data() {
     return {
       show: false
