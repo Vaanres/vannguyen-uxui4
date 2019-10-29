@@ -1,4 +1,4 @@
-const { series, src, dest } = require('gulp')
+const { series, parallel, src, dest } = require('gulp')
 const request = require('request')
 const fs = require('fs-extra')
 const sharp = require('sharp')
@@ -11,12 +11,6 @@ const keyBehance = 'A3XrFvC6jnX6dLGSipermgOApEKZ6AU6'
 const jsonFilePath = 'static/data/projects.json'
 // const imgAssets = 'assets/img/work/'
 const imgAssets = 'static/img/work/'
-
-function getBehanceJSON() {
-  return request(apiBehance + keyBehance).pipe(
-    fs.createWriteStream(jsonFilePath)
-  )
-}
 
 function convertToWebPStatic() {
   return src('static/img/banners/*')
@@ -52,22 +46,28 @@ function moveImages() {
   return src('static/img/work_resized/*').pipe(dest('static/img/work/'))
 }
 
+function getBehanceJSON() {
+  return request(apiBehance + keyBehance).pipe(
+    fs.createWriteStream(jsonFilePath)
+  )
+}
+
 function downloadImage(url, destination) {
-  return request(url)
+  const stream = request(url)
     .pipe(
       sharp()
         .resize({ width: 1024 })
         .png()
     )
     .pipe(fs.createWriteStream(destination))
+
+  return stream
 }
 
-function getImages(cb) {
-  const json = JSON.parse(fs.readFileSync(jsonFilePath))
+function getImages(done) {
+  const data = JSON.parse(fs.readFileSync(jsonFilePath)).projects
 
-  json.projects.forEach((item) => {
-    // const folder = imgAssets + item.id
-
+  data.forEach((item) => {
     if (!fs.existsSync(imgAssets)) {
       fs.mkdirSync(imgAssets)
     }
@@ -78,15 +78,15 @@ function getImages(cb) {
     downloadImage(url, destination)
   })
 
-  cb()
+  done()
 }
 
 exports.convertToWebPStatic = convertToWebPStatic
 
 exports.resize = series(
-  convertToWebP,
-  resizeImages,
+  parallel(resizeImages, convertToWebP),
   moveImages,
   cleanWorkResized
 )
+
 exports.default = series(getBehanceJSON, getImages)
