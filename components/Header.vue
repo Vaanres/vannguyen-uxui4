@@ -40,18 +40,6 @@ export default {
           title: 'About Me',
           link: '/about'
         }
-      ],
-      contactLinks: [
-        {
-          title: 'M: Vaanres@gmail.com',
-          link: 'mailto:vaanres@gmail.com',
-          tooltip: 'Send an email to me'
-        },
-        {
-          title: 'P: +84 866 485 946',
-          link: 'tel:+84866485946',
-          tooltip: 'Call me'
-        }
       ]
     }
   }

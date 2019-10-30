@@ -130,11 +130,7 @@ export default {
 
   webfontloader: {
     custom: {
-      families: [
-        'IBM Plex Serif:n5,n7',
-        'IBM Plex Sans:n5,n7',
-        'Material Icons'
-      ],
+      families: ['IBM Plex Serif:n5,n7', 'IBM Plex Sans:n4', 'Material Icons'],
       urls: [
         'https://fonts.googleapis.com/css?family=IBM+Plex+Serif:500,700&display=swap',
         'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400&display=swap',
