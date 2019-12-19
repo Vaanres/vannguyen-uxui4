@@ -98,3 +98,7 @@ firebase-debug.log
 **/firebase-debug.log
 hosting.*
 .firebase/hosting.ZGlzdA.cache
+
+
+# Local History Plugin
+.history
