@@ -34,7 +34,7 @@
     "bootstrap-vue": "^2.0.4",
     "charming": "^3.0.1",
     "cookie-universal-nuxt": "^2.0.18",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lodash": "^4.17.15",
     "nuxt": "^2.10.2",
     "nuxt-webfontloader": "^1.1.0",
